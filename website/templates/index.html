@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <h1> You're loggedIn</h1>
+
+    {% else %}
+
+        <div class="row gy-4 d-flex justify-content-end">
+
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="info-item d-flex">
+                    <i class="bi bi-geo-alt flex-shrink-0"></i>
+                    <div>
+                        <h4>Location:</h4>
+                        <p>A108 Adam Street, New York, NY 535022</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex">
+                    <i class="bi bi-envelope flex-shrink-0"></i>
+                    <div>
+                        <h4>Email:</h4>
+                        <p>info@example.com</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex">
+                    <i class="bi bi-phone flex-shrink-0"></i>
+                    <div>
+                        <h4>Call:</h4>
+                        <p>+1 5589 55488 55</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+                <div class="col-md-6 offset-md-3">
+
+                    <h1>Login</h1>
+                    <br>
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group mt-3">
+                                <input type="text" name="username" class="form-control" id="name"
+                                       placeholder="User Name"
+                                       required>
+                            </div>
+                            <br>
+                            <div class="form-group mt-3">
+
+                                <input type="password" class="form-control" name="password" id="email"
+                                       placeholder="Password" required>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">LogIn</button>
+
+                    </form>
+
+                    <a href="{% url 'register' %}">Register</a>
+                </div>
+
+
+            </div><!-- End Contact Form -->
+
+        </div>
+    {% endif %}
+
+{% endblock %}

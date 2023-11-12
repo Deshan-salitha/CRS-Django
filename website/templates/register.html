@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="col-md-6 offset-md-5">
+        <h1>Register</h1><br><br><br>
+        <div class="container">
+            <div class="row">
+                <div><img src="{% static 'images/single.png' %}"></div>
+                <br>
+                <a href="{% url 'page1' %}">I am registering for myself</a>
+            </div>
+            <br><br>
+            <div class="row">
+                <div><img src="{% static 'images/group.png' %}"></div>
+                <br>
+                <a href="{% url 'page2' %}">I am registering a group</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
