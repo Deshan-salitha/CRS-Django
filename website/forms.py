@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Group
+from .models import User, Group, Attendee
 from django import forms
 
 
@@ -10,7 +10,8 @@ class SignUpForm(UserCreationForm):
                                  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
     last_name = forms.CharField(label="", max_length="100",
                                 widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}))
-    registration_trype = forms.ChoiceField(label="", choices=(('0', 'Group'), ('1', 'Single')), widget=forms.RadioSelect,
+    registration_trype = forms.ChoiceField(label="", choices=(('0', 'Group'), ('1', 'Single')),
+                                           widget=forms.RadioSelect,
                                            required=True)
 
     class Meta:
@@ -58,3 +59,9 @@ class SignUpFormGroup(forms.ModelForm):
     #
     # def __init__(self, *args, **kwargs):
     #     super(SignUpFormGroup, self).__init__(*args, **kwargs)
+
+
+class AddAttendee(forms.ModelForm):
+    class Meta:
+        model = Attendee
+        fields = '__all__'

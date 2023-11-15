@@ -3,15 +3,17 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, SignUpFormGroup
+from .forms import SignUpForm, SignUpFormGroup, AddAttendee
 from .models import User, Attendee, Event
 
 
 # Create your views here.
 def index(request):
+    reuser = False
     type = 'Single'
     events = Event.objects.all()
     attenddee = Attendee.objects.all()
+    users = User.objects.all()
     for att in attenddee:
         if att.attendee_user.id == request.user.id:
             print('in')
@@ -21,8 +23,12 @@ def index(request):
                 print('in group')
                 attenddee = Attendee.objects.filter(attendee_group=att.attendee_group)
                 print(attenddee)
+            if att.attendee_group.representative_user == request.user:
+                reuser = True
+    print(reuser)
     return render(request, 'index.html',
-                  {'type': type, 'groupmembers': attenddee, 'group': att.attendee_group, 'events': events})
+                  {'type': type, 'groupmembers': attenddee, 'group': att.attendee_group, 'events': events,
+                   'reuser': reuser, 'users': users})
 
 
 def login_user(request):
@@ -94,3 +100,18 @@ def group_registration(request):
             else:
                 messages.success(request, form._errors)
         return render(request, 'groupRegistration.html', {'form': form, 'user': users})
+
+
+def add_attendee(request):
+    form = AddAttendee(request.POST)
+    print(request.POST.get('attendee_group'))
+    if request.user.is_authenticated:
+        if request.POST:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'User Added!')
+                return redirect('home')
+            else:
+                print("out")
+                print(form.errors)
+    return redirect('home')

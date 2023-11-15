@@ -1,0 +1,36 @@
+{% block content %}
+    <div class="tab-pane fade show  profile-overview" id="profile-Add-memebers">
+
+        <h1>Add Members </h1>
+        <form method="post" action="{% url 'addmembers' %}">
+            {% csrf_token %}
+
+            <br>
+
+            <div class="row">
+                <div class="form-group mt-3">
+                    <select class="dropdown-item" id="validationTooltip04" name="attendee_group" required>
+                        <option selected disabled value="{{ group.id }}">{{ group.name }}</option>
+
+                    </select>
+                </div>
+                <br>
+                <div class="form-group mt-3" style="border: black 1px">
+                    <select class="dropdown-item" id="validationTooltip04" name="attendee_user" required>
+                        <option selected disabled value="">Choose...</option>
+                        {% for foo in  users %}
+
+                            <option value="{{ foo.id }}">{{ foo.username }}</option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-secondary">Add Member</button>
+
+        </form>
+    </div>
+{% endblock %}

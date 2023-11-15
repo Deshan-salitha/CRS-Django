@@ -47,12 +47,20 @@
                                         </button>
                                     </li>
                                 {% endif %}
+                                {% if reuser %}
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-Add-memebers">
+                                            Add Members
+                                        </button>
+                                    </li>
+                                {% endif %}
 
                                 <li class="nav-item">
                                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-event">
                                         Event
                                     </button>
                                 </li>
+
                             </ul>
                             <div class="tab-content pt-2">
 
@@ -62,6 +70,8 @@
                                 {% include 'grouptab.html' %}
                                 <!-- end of Group Tab-->
                                 {% include 'eventtab.html' %}
+                                <!--Add Members-->
+                                {% include 'addmemberstogroup.html' %}
                             </div>
                         </div>
                     </div>
