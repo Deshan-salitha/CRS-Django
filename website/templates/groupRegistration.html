@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>page 02</h1>
+    <form method="post" action="{% url 'groupregistration' %}">
+        {% csrf_token %}
+
+        <br>
+
+        <div class="row">
+            <div class="form-group mt-3">
+                <input type="text" name="name" class="form-control" id="name"
+                       placeholder="Group Name"
+                       required>
+            </div>
+            <br>
+            <div class="form-group mt-3" style="border: black 1px">
+                <select class="dropdown-item" id="validationTooltip04" name="representative_user" required>
+                    <option selected disabled value="">Choose...</option>
+                    {% for foo in  user %}
+
+                        <option value="{{ foo.id }}">{{ foo.username }}</option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary">Register As Group</button>
+
+    </form>
+{% endblock %}

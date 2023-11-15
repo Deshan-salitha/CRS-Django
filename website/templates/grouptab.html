@@ -1,0 +1,28 @@
+<div class="tab-pane fade show  profile-overview" id="profile-group">
+                                    <br>
+
+                                    <h5 class="card-title">Group Details</h5>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label ">Group Name</div>
+                                        <div class="col-lg-9 col-md-8">{{ group.name }} </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Representative User</div>
+                                        <div class="col-lg-9 col-md-8">{{ group.representative_user }}</div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Members</div>
+                                        <div class="col-lg-9 col-md-8">
+                                            {% for member in groupmembers %}
+                                                {{ member.attendee_user }}<br>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>

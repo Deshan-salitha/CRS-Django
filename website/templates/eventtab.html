@@ -1,0 +1,45 @@
+<!--Event Tab-->
+                                <div class="tab-pane fade show  profile-overview" id="profile-event">
+                                    <br>
+
+                                    <h5 class="card-title">Event Details</h5>
+                                    <br>
+
+                                    {% for event in events %}
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label "><strong>Event Name</strong></div>
+                                            <div class="col-lg-9 col-md-8"><strong> {{ event.event_name }} </strong></div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Description</div>
+                                            <div class="col-lg-9 col-md-8">{{ event.description }}</div>
+                                        </div>
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Start Date</div>
+                                            <div class="col-lg-9 col-md-8">
+                                                {{ event.start_date }}
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">End Date</div>
+                                            <div class="col-lg-9 col-md-8">
+                                                {{ event.end_date }}
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Location</div>
+                                            <div class="col-lg-9 col-md-8">
+                                                {{ event.location }}
+                                            </div>
+                                        </div>
+                                        <br>
+                                    {% endfor %}
+
+                                </div>
+                                <!--end of event Tab-->
